@@ -1,3 +1,8 @@
 langchain
 streamlit
 python-dotenv
+assemblyai
+chromadb
+sentence-transformers
+langchain-community
+yt-dlp
