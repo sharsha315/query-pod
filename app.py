@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from langchain_community.document_loaders import AssemblyAIAudioTranscriptLoader
 import assemblyai as aai
 import yt_dlp
+from langchain_upstage import UpstageEmbeddings
 
 load_dotenv()
 
@@ -56,16 +57,28 @@ loader = AssemblyAIAudioTranscriptLoader(
     api_key=ASSEMBLYAI_API_KEY,
     config=config
 )
-docs = loader.load()
+docs_load = loader.load()
+docs = docs_load[0].page_content
 
 
 # 2. Create Embeddings
+
+upstage_embeddings = UpstageEmbeddings(
+    api_key="UPSTAGE_API_KEY",
+    model="solar-embedding-1-large"
+)
+
+embeddings = upstage_embeddings.embed_documents(docs)
+
+# 3. Store in Vector Database
 
 
 
 def main():
     print("Ok. Done!!!")
-    print(docs)
+    #print(docs)
+    print(doc_result)
+    #print(query_result)
 
 
 

@@ -6,3 +6,5 @@ chromadb
 sentence-transformers
 langchain-community
 yt-dlp
+langchain-core 
+langchain-upstage
